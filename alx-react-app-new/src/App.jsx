@@ -15,11 +15,11 @@ function App() {
      <div>
       <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
     </div>
-     {/*02 <div>
+     02 <div>
       <Header />
       <MainContent />
       <Footer />
-    </div> */}
+    </div>
 
     {/*01-question <WelcomeMessage /> */}
       { /* 00-question <div>

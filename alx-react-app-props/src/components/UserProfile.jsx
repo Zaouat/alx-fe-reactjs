@@ -14,4 +14,4 @@ function UserProfile() {
 }
 
 
-export default ProfilePage;
+export default UserProfile;

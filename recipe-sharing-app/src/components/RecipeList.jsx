@@ -1,7 +1,7 @@
-// src/components/RecipeList.jsx
 import React from "react";
 import useRecipeStore from "./recipeStore";
-import "../App.css"; // Ensure you have this line to import the styles
+import "../App.css";
+import { Link } from "react-router-dom";
 
 const RecipeList = () => {
   const recipes = useRecipeStore((state) => state.recipes);
@@ -36,9 +36,10 @@ const RecipeList = () => {
           <div key={recipe.id} className="recipe-card">
             <h2>{recipe.title}</h2>
             <p>{recipe.description}</p>
-            <button className="edit_btn" onClick={() => handleEdit(recipe)}>
-              Edit
-            </button>
+            {/* Link to a detailed view or edit page */}
+            <Link to={`/edit/${recipe.id}`}>
+              <button className="edit_btn">Edit</button>
+            </Link>
             <button
               className="delete_btn"
               onClick={() => handleDelete(recipe.id)}

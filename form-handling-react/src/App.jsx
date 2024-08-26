@@ -1,5 +1,6 @@
 import React from "react";
 import RegistrationForm from "./components/RegistrationForm";
+import FormikForm from "./formikForm";
 import "./components/style.css";
 
 function App() {

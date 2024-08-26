@@ -1,0 +1,82 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    padding-top: 20px;
+}
+
+.App main {
+    width: 400px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px #f4f4f4;
+    text-align: center;
+}
+
+:root {
+    background-color: #f4f4f4 !important;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+p {
+    font-size: 16px;
+    color: #666;
+    margin: 10px 0 20px 0;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border-width: 1.5px;
+    border-color: grey;
+    background-color: white;
+    color: black;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

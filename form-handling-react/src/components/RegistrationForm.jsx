@@ -1,45 +1,54 @@
-import React from "react";
-import { Formik, Form, Field } from "formik";
+import React, { useState } from "react";
 
 const RegistrationForm = () => {
+  // Define states for each field
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle the submission logic, maybe logging or sending to an API
+    console.log({ username, email, password, confirmPassword });
+  };
+
   return (
-    <Formik
-      initialValues={{
-        name: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        role: "",
-      }}
-      onSubmit={(values) => {
-        console.log(values);
-      }}
-    >
-      {() => (
-        <Form>
-          <label htmlFor="name">Username*</label>
-          <Field name="name" type="text" />
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="username">Username*</label>
+      <input
+        id="username"
+        type="text"
+        value={username}
+        onChange={(event) => setUsername(event.target.value)}
+      />
 
-          <label htmlFor="email">Email*</label>
-          <Field name="email" type="email" />
+      <label htmlFor="email">Email*</label>
+      <input
+        id="email"
+        type="email"
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+      />
 
-          <label htmlFor="password">Password*</label>
-          <Field name="password" type="password" />
+      <label htmlFor="password">Password*</label>
+      <input
+        id="password"
+        type="password"
+        value={password}
+        onChange={(event) => setPassword(event.target.value)}
+      />
 
-          <label htmlFor="confirmPassword">Confirm password*</label>
-          <Field name="confirmPassword" type="password" />
+      <label htmlFor="confirmPassword">Confirm password*</label>
+      <input
+        id="confirmPassword"
+        type="password"
+        value={confirmPassword}
+        onChange={(event) => setConfirmPassword(event.target.value)}
+      />
 
-          {/* <label htmlFor="role">Role*</label>
-          <Field name="role" as="select">
-            <option value="">Select an option</option>
-            <option value="buyer">Buyer</option>
-            <option value="seller">Seller</option>
-          </Field> */}
-
-          <button type="submit">Sign up</button>
-        </Form>
-      )}
-    </Formik>
+      <button type="submit">Sign up</button>
+    </form>
   );
 };
 

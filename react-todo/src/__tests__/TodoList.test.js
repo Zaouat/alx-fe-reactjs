@@ -1,34 +1,36 @@
 // src/__tests__/TodoList.test.js
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import TodoList from "../components/TodoList";
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import TodoList from '../TodoList';
 
-test("renders initial todos", () => {
+test('renders TodoList component with initial todos', () => {
   render(<TodoList />);
-  expect(screen.getByText("Learn React")).toBeInTheDocument();
-  expect(screen.getByText("Build a Todo App")).toBeInTheDocument();
+  expect(screen.getByText(/Learn React/i)).toBeInTheDocument();
+  expect(screen.getByText(/Build a Todo App/i)).toBeInTheDocument();
 });
 
-test("adds a new todo", () => {
+test('can add a new todo', () => {
   render(<TodoList />);
-  fireEvent.change(screen.getByRole("textbox"), {
-    target: { value: "New Todo" },
+  fireEvent.change(screen.getByPlaceholderText(/Add a new todo/i), {
+    target: { value: 'New Todo' }
   });
-  fireEvent.click(screen.getByText("Add Todo"));
-  expect(screen.getByText("New Todo")).toBeInTheDocument();
+  fireEvent.click(screen.getByText(/Add/i));
+  expect(screen.getByText(/New Todo/i)).toBeInTheDocument();
 });
 
-test("toggles a todo", () => {
+test('can toggle a todo between completed and not completed', () => {
   render(<TodoList />);
-  const todoItem = screen.getByText("Learn React");
-  fireEvent.click(todoItem);
-  expect(todoItem).toHaveStyle("text-decoration: line-through");
-  fireEvent.click(todoItem);
-  expect(todoItem).not.toHaveStyle("text-decoration: line-through");
+  const todo = screen.getByText(/Learn React/i);
+  fireEvent.click(todo);
+  expect(todo).toHaveStyle('text-decoration: line-through');
+  fireEvent.click(todo);
+  expect(todo).toHaveStyle('text-decoration: none');
 });
 
-test("deletes a todo", () => {
+test('can delete a todo', () => {
   render(<TodoList />);
-  fireEvent.click(screen.getByText("Delete", { selector: "button" }));
-  expect(screen.queryByText("Learn React")).not.toBeInTheDocument();
+  const todo = screen.getByText(/Learn React/i);
+  fireEvent.click(screen.getByText(/Delete/i));
+  expect(todo).not.toBeInTheDocument();
 });

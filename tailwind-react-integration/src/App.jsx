@@ -1,11 +1,10 @@
 // src/App.js
-
 import React from "react";
 import UserProfile from "./components/UserProfile";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <UserProfile />
     </div>
   );

@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Spaghetti Carbonara",
-    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "summary": "A traditional Italian pasta dish featuring rich, creamy sauce made with eggs, Pecorino Romano, and crispy pancetta, all perfectly seasoned with black pepper.",
     "image": "https://via.placeholder.com/150",
     "ingredients": [
       "400g spaghetti",
@@ -25,7 +25,7 @@
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
-    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+    "summary": "Tender chunks of grilled chicken cooked in a rich, creamy, and aromatic tomato-based sauce infused with a blend of Indian spices.",
     "image": "https://via.placeholder.com/150",
     "ingredients": [
       "800g boneless chicken, cut into cubes",
@@ -50,6 +50,85 @@
       "Add canned tomatoes and simmer for 15 minutes until sauce thickens.",
       "Stir in cream and cooked chicken. Simmer for 5-10 minutes.",
       "Garnish with fresh cilantro and serve with naan bread or rice."
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Bibimbap",
+    "summary": "A popular Korean dish consisting of a bowl of warm white rice topped with sautéed vegetables, a fried egg, sliced meat, and gochujang (Korean chili paste).",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+      "2 cups steamed white rice",
+      "200g beef or chicken, thinly sliced",
+      "1 carrot, julienned",
+      "1 zucchini, sliced",
+      "100g spinach, blanched",
+      "1 egg",
+      "2 tbsp sesame oil",
+      "2 tbsp soy sauce",
+      "1 tbsp gochujang (Korean chili paste)",
+      "1 tsp sugar",
+      "1 garlic clove, minced",
+      "Sesame seeds for garnish"
+    ],
+    "instructions": [
+      "Cook rice and set aside. Sauté beef in a pan with soy sauce, garlic, and sugar until cooked.",
+      "Sauté the carrot and zucchini separately in sesame oil until tender.",
+      "Blanch the spinach and season with soy sauce and sesame oil.",
+      "Fry an egg sunny-side up.",
+      "In a bowl, arrange rice, beef, vegetables, and egg. Add gochujang on top.",
+      "Garnish with sesame seeds and serve immediately, mixing all ingredients before eating."
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Tagine of Lamb with Prunes",
+    "summary": "A slow-cooked Moroccan dish made with tender lamb, sweet prunes, and aromatic spices, served with couscous or flatbread.",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+      "1kg lamb shoulder, cut into chunks",
+      "200g prunes",
+      "1 large onion, finely chopped",
+      "2 garlic cloves, minced",
+      "1 tsp ground cinnamon",
+      "1 tsp ground ginger",
+      "1 tsp ground turmeric",
+      "1 tsp cumin",
+      "2 tbsp honey",
+      "2 tbsp olive oil",
+      "500ml beef or vegetable stock",
+      "Fresh cilantro for garnish",
+      "Almonds and sesame seeds for garnish"
+    ],
+    "instructions": [
+      "Heat olive oil in a tagine or heavy pot and brown the lamb on all sides.",
+      "Add chopped onions and garlic, cook until softened.",
+      "Stir in cinnamon, ginger, turmeric, and cumin, cooking for another minute.",
+      "Add prunes, honey, and stock. Bring to a boil, then reduce heat and simmer for 1.5-2 hours until lamb is tender.",
+      "Garnish with fresh cilantro, toasted almonds, and sesame seeds. Serve with couscous or flatbread."
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Margherita Pizza",
+    "summary": "A simple yet delicious Italian pizza topped with fresh mozzarella, tomatoes, and basil leaves, drizzled with olive oil.",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+      "1 pizza dough",
+      "200g fresh mozzarella cheese",
+      "3 ripe tomatoes, sliced",
+      "Fresh basil leaves",
+      "2 tbsp olive oil",
+      "Salt",
+      "Black pepper"
+    ],
+    "instructions": [
+      "Preheat oven to 250°C (480°F).",
+      "Roll out the pizza dough on a floured surface.",
+      "Top with sliced tomatoes and mozzarella cheese.",
+      "Bake for 10-12 minutes until the crust is golden and the cheese is bubbly.",
+      "Remove from the oven, top with fresh basil leaves, and drizzle with olive oil.",
+      "Season with salt and pepper before serving."
     ]
   }
 ]

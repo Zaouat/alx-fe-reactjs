@@ -4,6 +4,7 @@ const AddRecipeForm = () => {
   const [formData, setFormData] = useState({
     title: "",
     ingredients: "",
+    steps: "",
     instructions: "",
   });
   const [errors, setErrors] = useState({});
@@ -12,7 +13,7 @@ const AddRecipeForm = () => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: e.target.value, // Explicitly using e.target.value here
     }));
   };
 
@@ -26,6 +27,7 @@ const AddRecipeForm = () => {
     ) {
       tempErrors.ingredients = "Please enter at least two ingredients";
     }
+    if (!formData.steps.trim()) tempErrors.steps = "Steps are required";
     if (!formData.instructions.trim())
       tempErrors.instructions = "Instructions are required";
     setErrors(tempErrors);
@@ -36,9 +38,8 @@ const AddRecipeForm = () => {
     e.preventDefault();
     if (validateForm()) {
       console.log("Form submitted:", formData);
-      // Here you would typically send the data to your backend or state management
       alert("Recipe submitted successfully!");
-      setFormData({ title: "", ingredients: "", instructions: "" });
+      setFormData({ title: "", ingredients: "", steps: "", instructions: "" });
     } else {
       console.log("Form has errors, please correct them");
     }
@@ -90,10 +91,30 @@ const AddRecipeForm = () => {
         </div>
         <div>
           <label
+            htmlFor="steps"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Steps
+          </label>
+          <textarea
+            id="steps"
+            name="steps"
+            value={formData.steps}
+            onChange={handleChange}
+            rows="5"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter recipe steps"
+          ></textarea>
+          {errors.steps && (
+            <p className="mt-1 text-sm text-red-600">{errors.steps}</p>
+          )}
+        </div>
+        <div>
+          <label
             htmlFor="instructions"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Instructions
+            Additional Instructions
           </label>
           <textarea
             id="instructions"
@@ -102,7 +123,7 @@ const AddRecipeForm = () => {
             onChange={handleChange}
             rows="5"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Enter cooking instructions"
+            placeholder="Enter additional cooking instructions"
           ></textarea>
           {errors.instructions && (
             <p className="mt-1 text-sm text-red-600">{errors.instructions}</p>

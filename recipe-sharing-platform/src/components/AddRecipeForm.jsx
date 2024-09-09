@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 const AddRecipeForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
+    summary: "",
     ingredients: "",
-    steps: "",
     instructions: "",
   });
   const [errors, setErrors] = useState({});
@@ -13,21 +15,17 @@ const AddRecipeForm = () => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: e.target.value, // Explicitly using e.target.value here
+      [name]: value,
     }));
   };
 
   const validateForm = () => {
     let tempErrors = {};
     if (!formData.title.trim()) tempErrors.title = "Title is required";
+    if (!formData.summary.trim())
+      tempErrors.summary = "Description is required";
     if (!formData.ingredients.trim())
       tempErrors.ingredients = "Ingredients are required";
-    if (
-      formData.ingredients.split("\n").filter((item) => item.trim()).length < 2
-    ) {
-      tempErrors.ingredients = "Please enter at least two ingredients";
-    }
-    if (!formData.steps.trim()) tempErrors.steps = "Steps are required";
     if (!formData.instructions.trim())
       tempErrors.instructions = "Instructions are required";
     setErrors(tempErrors);
@@ -39,107 +37,149 @@ const AddRecipeForm = () => {
     if (validateForm()) {
       console.log("Form submitted:", formData);
       alert("Recipe submitted successfully!");
-      setFormData({ title: "", ingredients: "", steps: "", instructions: "" });
+      setFormData({
+        title: "",
+        summary: "",
+        ingredients: "",
+        instructions: "",
+      });
     } else {
       console.log("Form has errors, please correct them");
     }
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6 text-center">Add New Recipe</h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label
-            htmlFor="title"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Recipe Title
-          </label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Enter recipe title"
-          />
-          {errors.title && (
-            <p className="mt-1 text-sm text-red-600">{errors.title}</p>
-          )}
+    <div className="min-h-screen bg-gray-100">
+      <div className="relative h-64 ">
+        <div className="absolute inset-0   flex flex-col justify-between">
+          <div className="container mx-auto px-4 py-4">
+            <Link
+              to="/"
+              className="text-white hover:text-gray-200 inline-block bg-[#5B4DE3] bg-opacity-70 hover:bg-opacity-100 py-2 px-4 rounded-full transition-all duration-300"
+            >
+              &larr; Back to Home
+            </Link>
+          </div>
+          <div className="flex-grow flex items-center justify-center">
+            <h1 className="text-5xl font-bold text-white text-center px-4 shadow-text text-violet-700">
+              Add New Recipe
+            </h1>
+          </div>
+          <div className="h-16"></div>
         </div>
-        <div>
-          <label
-            htmlFor="ingredients"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Ingredients (one per line)
-          </label>
-          <textarea
-            id="ingredients"
-            name="ingredients"
-            value={formData.ingredients}
-            onChange={handleChange}
-            rows="5"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Enter ingredients, one per line"
-          ></textarea>
-          {errors.ingredients && (
-            <p className="mt-1 text-sm text-red-600">{errors.ingredients}</p>
-          )}
-        </div>
-        <div>
-          <label
-            htmlFor="steps"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Steps
-          </label>
-          <textarea
-            id="steps"
-            name="steps"
-            value={formData.steps}
-            onChange={handleChange}
-            rows="5"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Enter recipe steps"
-          ></textarea>
-          {errors.steps && (
-            <p className="mt-1 text-sm text-red-600">{errors.steps}</p>
-          )}
-        </div>
-        <div>
-          <label
-            htmlFor="instructions"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Additional Instructions
-          </label>
-          <textarea
-            id="instructions"
-            name="instructions"
-            value={formData.instructions}
-            onChange={handleChange}
-            rows="5"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Enter additional cooking instructions"
-          ></textarea>
-          {errors.instructions && (
-            <p className="mt-1 text-sm text-red-600">{errors.instructions}</p>
-          )}
-        </div>
-        <div>
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-          >
-            Add Recipe
-          </button>
-        </div>
-      </form>
+      </div>
+
+      <main className="container mx-auto px-4 py-8">
+        <form onSubmit={handleSubmit} className="space-y-8">
+          <div className="bg-white shadow-lg rounded-xl overflow-hidden p-6 hover:shadow-xl transition-shadow duration-300">
+            <h2 className="text-2xl font-semibold mb-4 text-[#5B4DE3]">
+              Recipe Details
+            </h2>
+            <div className="space-y-4">
+              <div>
+                <label
+                  htmlFor="title"
+                  className="block text-lg font-medium mb-2 text-gray-700"
+                >
+                  Recipe Title
+                </label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleChange}
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                  placeholder="Enter recipe title"
+                />
+                {errors.title && (
+                  <p className="text-red-500 text-sm mt-1">{errors.title}</p>
+                )}
+              </div>
+              <div>
+                <label
+                  htmlFor="summary"
+                  className="block text-lg font-medium mb-2 text-gray-700"
+                >
+                  Description
+                </label>
+                <textarea
+                  id="summary"
+                  name="summary"
+                  value={formData.summary}
+                  onChange={handleChange}
+                  rows="3"
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                  placeholder="Enter recipe description"
+                ></textarea>
+                {errors.summary && (
+                  <p className="text-red-500 text-sm mt-1">{errors.summary}</p>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white shadow-lg rounded-xl overflow-hidden p-6 hover:shadow-xl transition-shadow duration-300">
+              <h2 className="text-2xl font-semibold mb-4 text-[#5B4DE3]">
+                Ingredients
+              </h2>
+              <textarea
+                id="ingredients"
+                name="ingredients"
+                value={formData.ingredients}
+                onChange={handleChange}
+                rows="10"
+                className="w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Enter ingredients, one per line (e.g., Ingredient, Amount)"
+              ></textarea>
+              {errors.ingredients && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.ingredients}
+                </p>
+              )}
+            </div>
+
+            <div className="bg-white shadow-lg rounded-xl overflow-hidden p-6 hover:shadow-xl transition-shadow duration-300">
+              <h2 className="text-2xl font-semibold mb-4 text-[#5B4DE3]">
+                Instructions
+              </h2>
+              <textarea
+                id="instructions"
+                name="instructions"
+                value={formData.instructions}
+                onChange={handleChange}
+                rows="10"
+                className="w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Enter recipe instructions, one step per line"
+              ></textarea>
+              {errors.instructions && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.instructions}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="bg-[#5B4DE3] hover:bg-[#4B3ED3] text-white font-bold py-3 px-6 rounded-full transition-colors duration-300"
+            >
+              Add Recipe
+            </button>
+          </div>
+        </form>
+      </main>
     </div>
   );
 };
 
 export default AddRecipeForm;
+
+// Add this CSS to your global styles or within a <style> tag in your component
+const styles = `
+  .shadow-text {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+`;

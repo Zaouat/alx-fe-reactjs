@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A traditional Italian pasta dish featuring rich, creamy sauce made with eggs, Pecorino Romano, and crispy pancetta, all perfectly seasoned with black pepper.",
-    "image": "https://via.placeholder.com/150",
+    "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80",
     "ingredients": [
       "400g spaghetti",
       "200g pancetta or guanciale",
@@ -26,7 +26,7 @@
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Tender chunks of grilled chicken cooked in a rich, creamy, and aromatic tomato-based sauce infused with a blend of Indian spices.",
-    "image": "https://via.placeholder.com/150",
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80",
     "ingredients": [
       "800g boneless chicken, cut into cubes",
       "1 cup yogurt",
@@ -56,7 +56,7 @@
     "id": 3,
     "title": "Bibimbap",
     "summary": "A popular Korean dish consisting of a bowl of warm white rice topped with sautéed vegetables, a fried egg, sliced meat, and gochujang (Korean chili paste).",
-    "image": "https://via.placeholder.com/150",
+    "image": "https://images.unsplash.com/photo-1553163147-622ab57be1c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
     "ingredients": [
       "2 cups steamed white rice",
       "200g beef or chicken, thinly sliced",
@@ -84,7 +84,7 @@
     "id": 4,
     "title": "Tagine of Lamb with Prunes",
     "summary": "A slow-cooked Moroccan dish made with tender lamb, sweet prunes, and aromatic spices, served with couscous or flatbread.",
-    "image": "https://via.placeholder.com/150",
+    "image": "https://i.postimg.cc/bwZj9ZnW/image-18.png",
     "ingredients": [
       "1kg lamb shoulder, cut into chunks",
       "200g prunes",
@@ -112,7 +112,7 @@
     "id": 5,
     "title": "Margherita Pizza",
     "summary": "A simple yet delicious Italian pizza topped with fresh mozzarella, tomatoes, and basil leaves, drizzled with olive oil.",
-    "image": "https://via.placeholder.com/150",
+    "image": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80",
     "ingredients": [
       "1 pizza dough",
       "200g fresh mozzarella cheese",

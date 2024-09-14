@@ -8,6 +8,7 @@ const AddRecipeForm = () => {
     summary: "",
     ingredients: "",
     instructions: "",
+    steps: "", // Added steps field
   });
   const [errors, setErrors] = useState({});
 
@@ -15,7 +16,7 @@ const AddRecipeForm = () => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: e.target.value, // Explicitly using e.target.value
     }));
   };
 
@@ -28,6 +29,7 @@ const AddRecipeForm = () => {
       tempErrors.ingredients = "Ingredients are required";
     if (!formData.instructions.trim())
       tempErrors.instructions = "Instructions are required";
+    if (!formData.steps.trim()) tempErrors.steps = "Steps are required"; // Added validation for steps
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
@@ -42,6 +44,7 @@ const AddRecipeForm = () => {
         summary: "",
         ingredients: "",
         instructions: "",
+        steps: "", // Reset steps field
       });
     } else {
       console.log("Form has errors, please correct them");
@@ -159,6 +162,25 @@ const AddRecipeForm = () => {
                 </p>
               )}
             </div>
+          </div>
+
+          {/* New Steps field */}
+          <div className="bg-white shadow-lg rounded-xl overflow-hidden p-6 hover:shadow-xl transition-shadow duration-300">
+            <h2 className="text-2xl font-semibold mb-4 text-[#5B4DE3]">
+              Steps
+            </h2>
+            <textarea
+              id="steps"
+              name="steps"
+              value={formData.steps}
+              onChange={handleChange}
+              rows="10"
+              className="w-full p-2 border border-gray-300 rounded-md"
+              placeholder="Enter recipe steps, one step per line"
+            ></textarea>
+            {errors.steps && (
+              <p className="text-red-500 text-sm mt-1">{errors.steps}</p>
+            )}
           </div>
 
           <div className="flex justify-center">

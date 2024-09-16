@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { searchUsers } from "../services/githubService";
+import { searchUsers, fetchUserData } from "../services/githubService";
 
 const Search = () => {
   const [searchParams, setSearchParams] = useState({
@@ -10,6 +10,8 @@ const Search = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -18,16 +20,37 @@ const Search = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setPage(1);
+    await performSearch();
+  };
+
+  const performSearch = async () => {
     setLoading(true);
     setError(null);
     try {
-      const results = await searchUsers(searchParams);
-      setSearchResults(results.items);
+      const results = await searchUsers({ ...searchParams, page });
+      const detailedResults = await Promise.all(
+        results.items.map(async (user) => {
+          const details = await fetchUserData(user.login);
+          return { ...user, ...details };
+        })
+      );
+      if (page === 1) {
+        setSearchResults(detailedResults);
+      } else {
+        setSearchResults((prev) => [...prev, ...detailedResults]);
+      }
+      setHasMore(results.items.length === 30); // Assuming 30 is the per_page value
     } catch (err) {
-      setError("Looks like we cant find the user");
+      setError("An error occurred while searching for users");
     } finally {
       setLoading(false);
     }
+  };
+
+  const loadMore = () => {
+    setPage((prev) => prev + 1);
+    performSearch();
   };
 
   return (
@@ -94,6 +117,15 @@ const Search = () => {
             </div>
           ))}
         </div>
+      )}
+
+      {hasMore && searchResults.length > 0 && (
+        <button
+          onClick={loadMore}
+          className="mt-4 w-full bg-gray-500 text-white py-2 rounded-md hover:bg-gray-600"
+        >
+          Load More
+        </button>
       )}
     </div>
   );

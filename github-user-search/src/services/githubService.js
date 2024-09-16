@@ -13,9 +13,12 @@ export const searchUsers = async ({
     if (location) query += ` location:${location}`;
     if (minRepos) query += ` repos:>=${minRepos}`;
 
-    const response = await axios.get(`${GITHUB_API_URL}/search/users`, {
-      params: { q: query, per_page: 30, page },
-    });
+    const response = await axios.get(
+      `${GITHUB_API_URL}/search/users?q=${encodeURIComponent(query)}`,
+      {
+        params: { per_page: 30, page },
+      }
+    );
     return response.data;
   } catch (error) {
     console.error("Error searching users:", error);

@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Search from "./components/Search";
 
 function App() {
   return (
@@ -7,7 +8,9 @@ function App() {
       <header className="App-header">
         <h1>GitHub User Search</h1>
       </header>
-      <main>{/* Search component will go here */}</main>
+      <main>
+        <Search />
+      </main>
     </div>
   );
 }

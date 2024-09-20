@@ -12,6 +12,7 @@ const Search = () => {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [hasSearched, setHasSearched] = useState(false);
 
   const handleInputChange = (e) => {
     const name = e.target.name;
@@ -22,6 +23,7 @@ const Search = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setPage(1);
+    setHasSearched(true);
     await performSearch();
   };
 
@@ -93,6 +95,11 @@ const Search = () => {
 
       {loading && <p className="text-center">Loading...</p>}
       {error && <p className="text-center text-red-500">{error}</p>}
+      {hasSearched && searchResults.length === 0 && !loading && !error && (
+        <p className="text-center text-red-500">
+          Looks like we can't find the user
+        </p>
+      )}
       {searchResults.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {searchResults.map((user) => (

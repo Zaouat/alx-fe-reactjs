@@ -32,20 +32,25 @@ const Search = () => {
     setError(null);
     try {
       const results = await searchUsers({ ...searchParams, page });
-      const detailedResults = await Promise.all(
-        results.items.map(async (user) => {
-          const details = await fetchUserData(user.login);
-          return { ...user, ...details };
-        })
-      );
-      if (page === 1) {
-        setSearchResults(detailedResults);
+      if (results.items.length === 0) {
+        setError("Looks like we cant find the user");
+        setSearchResults([]);
       } else {
-        setSearchResults((prev) => [...prev, ...detailedResults]);
+        const detailedResults = await Promise.all(
+          results.items.map(async (user) => {
+            const details = await fetchUserData(user.login);
+            return { ...user, ...details };
+          })
+        );
+        if (page === 1) {
+          setSearchResults(detailedResults);
+        } else {
+          setSearchResults((prev) => [...prev, ...detailedResults]);
+        }
+        setHasMore(results.items.length === 30); // Assuming 30 is the per_page value
       }
-      setHasMore(results.items.length === 30); // Assuming 30 is the per_page value
     } catch (err) {
-      setError("An error occurred while searching for users");
+      setError("Looks like we cant find the user");
     } finally {
       setLoading(false);
     }
@@ -95,11 +100,6 @@ const Search = () => {
 
       {loading && <p className="text-center">Loading...</p>}
       {error && <p className="text-center text-red-500">{error}</p>}
-      {hasSearched && searchResults.length === 0 && !loading && !error && (
-        <p className="text-center text-red-500">
-          Looks like we can't find the user
-        </p>
-      )}
       {searchResults.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {searchResults.map((user) => (

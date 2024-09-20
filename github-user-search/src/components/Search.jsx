@@ -14,7 +14,8 @@ const Search = () => {
   const [hasMore, setHasMore] = useState(true);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const name = e.target.name;
+    const value = e.target.value;
     setSearchParams((prev) => ({ ...prev, [name]: value }));
   };
 
